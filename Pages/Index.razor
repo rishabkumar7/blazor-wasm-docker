@@ -1,0 +1,29 @@
+﻿@page "/"
+@using BlazorAnimate
+
+
+<h2>What's your name?</h2>
+<input type="text" @bind-value="_name" />
+<br>
+
+<h1>Hello, @_name</h1>
+
+Welcome to your new app.
+
+<button class="btn btn-primary" @onclick="Animation"> Click me</button>
+<br>
+
+<Animate Animation="Animations.SlideDown" Duration="TimeSpan.FromSeconds(1.0)" @ref="animate" IsManual="true">
+  <Counter></Counter>
+</Animate>
+
+@code {
+  private string _name = "";
+
+  private Animate animate;
+
+  private void Animation()
+  {
+    animate.Run();
+  }
+}
